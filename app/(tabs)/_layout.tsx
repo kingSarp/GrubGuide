@@ -1,37 +1,99 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { StyleSheet, Text, View, Image } from "react-native";
+import React from "react";
+import { Tabs } from "expo-router";
+import icons from "@/constants/icons";
+import TabIcons from "@/components/TabIcons";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+const Tablayout = () => {
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-      }}>
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          // backgroundColor: "#161622",
+          // borderTopWidth: 1,
+          // borderTopColor: "#232533",
+          height: 90,
+        },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="Home"
         options={{
-          title: 'Home',
+          title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabIcons
+              icon={icons.home}
+              color={color}
+              name="Home"
+              focused={focused}
+            />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="Search"
         options={{
-          title: 'Explore',
+          title: "Search",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabIcons
+              icon={icons.search}
+              color={color}
+              name="Search"
+              focused={focused}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Review"
+        options={{
+          title: "Review",
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcons
+              icon={icons.article}
+              color={color}
+              name="Review"
+              focused={focused}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Favorites"
+        options={{
+          title: "Favorites",
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcons
+              icon={icons.search}
+              color={color}
+              name="Favorites"
+              focused={focused}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color, focused }) => (
+            <TabIcons
+              icon={icons.menu}
+              color={color}
+              name="Profile"
+              focused={focused}
+            />
           ),
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default Tablayout;
+
+const styles = StyleSheet.create({});
