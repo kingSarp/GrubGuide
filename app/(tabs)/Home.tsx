@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, View ,Image } from "react-native";
+import { FlatList, StyleSheet, Text, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "@/components/SearchBar";
 import useResults from "@/hooks/useResults";
 import ResultList from "@/components/ResultList";
-
+import MainCard from "@/components/MainCard";
 
 // const DATA = [
 //   {
@@ -67,16 +67,10 @@ const Home = () => {
   const [term, setTerm] = useState<string>("");
   const [onTermSubmitted, results] = useResults();
 
-  const filterResultByTrending = () => {
+  const filterResultByTrending = () => {};
+  const filterResultByPrice = () => {};
 
-  }
-  const filterResultByPrice = () => {
-    
-  }
-
-  console.log("results", results)
-  
-  
+  console.log("results", results);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -86,21 +80,21 @@ const Home = () => {
           onTermChange={setTerm}
           onTermSubmit={() => onTermSubmitted(term)}
         />
+        <MainCard />
+        <ResultList title="Trending" />
         <Text style={styles.currentTerm}>Current search: {results.length}</Text>
-        <ResultList title='Trending'/>
-        <ResultList title='Trending'/>
-        <ResultList title='Trending' />
 
-
+        {/* 
         <FlatList
-          data={results}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View>
-              <Text>{item.name}</Text> 
-            </View>
-          )}
-        />
+  data={results}
+  keyExtractor={(item) => item.id}
+  renderItem={({ item }) => (
+    <View style={styles.resultItem}>
+      <Image source={{ uri: item.image }} style={styles.resultImage} />
+      <Text style={styles.resultText}>{item.name}</Text>
+    </View>
+  )}
+/> */}
       </View>
     </SafeAreaView>
   );
@@ -112,7 +106,8 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: "yellow",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
   currentTerm: {
     marginTop: 20,

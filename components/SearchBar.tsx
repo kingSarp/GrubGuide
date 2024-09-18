@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     position: "absolute",
-    left: 100,
+    left: 80,
     alignSelf: "center",
   },
   clearButton: {
