@@ -1,100 +1,42 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, View, Image } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "@/components/SearchBar";
 import useResults from "@/hooks/useResults";
 import ResultList from "@/components/ResultList";
 import MainCard from "@/components/MainCard";
-
-// const DATA = [
-//   {
-//     id: "1",
-//     title: "Data Structures",
-//     image: "https://via.placeholder.com/150",
-//   },
-//   {
-//     id: "2",
-//     title: "STL",
-//     image: "https://via.placeholder.com/150",
-//   },
-//   {
-//     id: "3",
-//     title: "C++",
-//     image: "https://via.placeholder.com/150",
-//   },
-//   {
-//     id: "4",
-//     title: "Java",
-//     image: "https://via.placeholder.com/150",
-//   },
-//   {
-//     id: "5",
-//     title: "Python",
-//     image: "https://via.placeholder.com/150",
-//   },
-//   {
-//     id: "6",
-//     title: "CP",
-//     image: "https://via.placeholder.com/150",
-//   },
-//   {
-//     id: "7",
-//     title: "ReactJs",
-//     image: "https://via.placeholder.com/150",
-//   },
-//   {
-//     id: "8",
-//     title: "NodeJs",
-//     image: "https://via.placeholder.com/150",
-//   },
-//   {
-//     id: "9",
-//     title: "MongoDb",
-//     image: "https://via.placeholder.com/150",
-//   },
-// ];
-
-type ItemProps = { title: string; image: string };
-
-// const Item = ({ title, image }: ItemProps) => (
-//   <View style={styles.item}>
-//     <Image source={{ uri: image }} style={styles.image} />
-//     <Text style={styles.title}>{title}</Text>
-//   </View>
-// );
+import Cost from "@/components/cost";
 
 const Home = () => {
   const [term, setTerm] = useState<string>("");
   const [onTermSubmitted, results] = useResults();
 
-  const filterResultByTrending = () => {};
-  const filterResultByPrice = () => {};
+  const filterResultbyPrice = (price: string) => {
+    //price == $ || $$ ||$$$
+    return results.filter((result) => {
+      return result.price === price;
+    });
+  };
 
   console.log("results", results);
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View>
+      <View style={styles.main}>
         <SearchBar
           term={term}
           onTermChange={setTerm}
           onTermSubmit={() => onTermSubmitted(term)}
         />
-        <MainCard />
-        <ResultList title="Trending" />
-        <Text style={styles.currentTerm}>Current search: {results.length}</Text>
 
-        {/* 
-        <FlatList
-  data={results}
-  keyExtractor={(item) => item.id}
-  renderItem={({ item }) => (
-    <View style={styles.resultItem}>
-      <Image source={{ uri: item.image }} style={styles.resultImage} />
-      <Text style={styles.resultText}>{item.name}</Text>
-    </View>
-  )}
-/> */}
+        {/* <MainCard /> */}
+        <ScrollView>
+           <Cost title="cheap" results={filterResultbyPrice("$$")} />
+          <Cost title="medium" results={filterResultbyPrice("$$")} />
+          <Cost title="expensive" results={filterResultbyPrice("$$")} />
+        </ScrollView>
+
+        {/* <ResultList title="Trending" /> */}
       </View>
     </SafeAreaView>
   );
@@ -104,13 +46,16 @@ export default Home;
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1,
-    backgroundColor: "yellow",
-    justifyContent: "space-around",
-    alignItems: "center",
+    flex: 1, 
   },
+  main: {
+    flexGrow: 1,
+    width: "100%",
+    backgroundColor: "red", // Debug color for SafeAreaView,
+  },
+
   currentTerm: {
-    marginTop: 20,
+    marginTop: 10,
     fontSize: 16,
     textAlign: "center",
   },

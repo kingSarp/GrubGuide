@@ -60,12 +60,13 @@ const styles = StyleSheet.create({
     height: 43,
     backgroundColor: "#fff",
     borderRadius: 25,
-    paddingHorizontal: 15,
-    elevation: 2,
+     elevation: 2,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
+    marginTop:10,
+    marginBottom:10
   },
   input: {
     flex: 1,

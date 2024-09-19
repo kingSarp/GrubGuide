@@ -33,11 +33,9 @@ const MainCard = () => {
           </View>
 
           <View style={styles.locationReviewsContainer}>
-          <Text style={styles.location}>Jungbusch, Mannheim</Text>
-          <Text style={styles.reviews}>250 Reviews</Text>
+            <Text style={styles.location}>Jungbusch, Mannheim</Text>
+            <Text style={styles.reviews}>250 Reviews</Text>
           </View>
-
-          
         </View>
       </View>
     </View>
@@ -62,13 +60,16 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: "100%",
-    height: 200,
+    height: 350,
     resizeMode: "cover",
   },
   cardInfo: {
     padding: 10,
     flexDirection: "row",
-    alignContent: "center",
+    alignItems: "center",
+    justifyContent:"space-evenly",
+    // backgroundColor:"red",
+
   },
   miniImage: {
     width: 50,
@@ -76,38 +77,54 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     borderRadius: 25,
   },
+
   miniInfo: {
-      flexDirection: "column",
-      justifyContent: "center",
+    flex: 1, // This allows the miniInfo to take up remaining space
+    flexDirection: "column",
+    justifyContent: "center",
+    marginLeft: 10, // Add some space between miniImage and miniInfo
   },
   distanceContainer: {
     flexDirection: "row",
     alignItems: "center",
     position: "absolute",
-    bottom: 125,
+    bottom: 90,
     left: 10,
+
+
   },
   distanceText: {
     marginLeft: 5,
     color: "white",
     fontWeight: "bold",
+
   },
   placeName: {
     fontSize: 18,
     fontWeight: "bold",
-    marginTop: 5,
+    // backgroundColor:"green"
+    // marginTop: 5,
+
   },
   priceRatingContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 5,
+    justifyContent:"space-between",
+    alignItems:"center"
+    // backgroundColor:"yellow",
+
   },
   locationReviewsContainer: {
-      flexDirection:"row"
+    flexDirection: "row",
+    justifyContent:"space-between"
+    // backgroundColor:"blue",
+
+
   },
   price: {
     fontSize: 16,
     color: "grey",
+    marginRight:80
+
   },
   rating: {
     fontSize: 16,
