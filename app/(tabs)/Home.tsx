@@ -12,13 +12,11 @@ const Home = () => {
   const [onTermSubmitted, results] = useResults();
 
   const filterResultbyPrice = (price: string) => {
-    //price == $ || $$ ||$$$
+    // price == $ || $$ || $$$
     return results.filter((result) => {
       return result.price === price;
     });
   };
-
-  console.log("results", results);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -28,15 +26,12 @@ const Home = () => {
           onTermChange={setTerm}
           onTermSubmit={() => onTermSubmitted(term)}
         />
-
-        {/* <MainCard /> */}
-        <ScrollView>
-           <Cost title="cheap" results={filterResultbyPrice("$$")} />
-          <Cost title="medium" results={filterResultbyPrice("$$")} />
-          <Cost title="expensive" results={filterResultbyPrice("$$")} />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <MainCard />
+          <ResultList title="Trending"/>
+          <Cost title="Medium" results={filterResultbyPrice("$$")} />
+          <Cost title="Expensive" results={filterResultbyPrice("$$")} />
         </ScrollView>
-
-        {/* <ResultList title="Trending" /> */}
       </View>
     </SafeAreaView>
   );
@@ -46,17 +41,11 @@ export default Home;
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1, 
+    flex:   1,
   },
   main: {
-    flexGrow: 1,
+    flex: 1,
     width: "100%",
-    backgroundColor: "red", // Debug color for SafeAreaView,
-  },
-
-  currentTerm: {
-    marginTop: 10,
-    fontSize: 16,
-    textAlign: "center",
+    // paddingHorizontal: 15,
   },
 });

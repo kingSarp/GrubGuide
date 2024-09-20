@@ -6,7 +6,7 @@ const ResultDetail = ({ result }: any) => {
     <View style={styles.main}>
       <Image source={{ uri: result.image_url }} style={styles.image} />
       <Text style={styles.name}>{result.name}</Text>
-      <Text>
+      <Text  style={styles.details}>
         {result.rating} stars, {result.review_count} Reviews
       </Text>
     </View>
@@ -17,15 +17,22 @@ export default ResultDetail;
 
 const styles = StyleSheet.create({
     main:{
-        marginLeft:10
-    },
+        marginLeft:15  ,
+      },
   image: {
-    width: 250,
-    height: 120,
-    borderRadius: 4,
+    width: 200, 
+    height: 150,
+    borderRadius: 12, 
+    marginBottom: 10, // Space between image and text
+
   },
   name: {
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 15,
+    marginBottom: 4, // Space between name and details
+  },
+  details: {
+    fontSize: 13,
+    color: "grey", // Softer color for details text
   },
 });

@@ -56,20 +56,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
-    marginTop: 20,
+    marginTop: 10,
+    alignSelf: "center", // Center the card in the screen
+
   },
   cardImage: {
     width: "100%",
-    height: 350,
+    height: 270,
     resizeMode: "cover",
   },
   cardInfo: {
-    padding: 10,
+    padding: 15,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent:"space-evenly",
-    // backgroundColor:"red",
-
   },
   miniImage: {
     width: 50,
@@ -80,8 +79,6 @@ const styles = StyleSheet.create({
 
   miniInfo: {
     flex: 1, // This allows the miniInfo to take up remaining space
-    flexDirection: "column",
-    justifyContent: "center",
     marginLeft: 10, // Add some space between miniImage and miniInfo
   },
   distanceContainer: {
@@ -90,6 +87,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 90,
     left: 10,
+    backgroundColor: "rgba(0, 0, 0, 0.6)", // Background for better text visibility
+    paddingHorizontal: 8,
+    paddingVertical: 5,
+    borderRadius: 5,
 
 
   },
@@ -102,21 +103,17 @@ const styles = StyleSheet.create({
   placeName: {
     fontSize: 18,
     fontWeight: "bold",
-    // backgroundColor:"green"
-    // marginTop: 5,
+
 
   },
   priceRatingContainer: {
     flexDirection: "row",
     justifyContent:"space-between",
     alignItems:"center"
-    // backgroundColor:"yellow",
-
   },
   locationReviewsContainer: {
     flexDirection: "row",
-    justifyContent:"space-between"
-    // backgroundColor:"blue",
+    justifyContent:"space-between",
 
 
   },

@@ -4,7 +4,7 @@ import ResultDetail from "./ResultDetail";
 
 const cost = ({ title, results }: any) => {
   return (
-    <View >
+    <View style={styles.main}>
       <Text style={styles.title}>{title}</Text>
       {/* <Text>Result hi {results.length}</Text> */}
       <FlatList
@@ -23,8 +23,16 @@ const cost = ({ title, results }: any) => {
 export default cost;
 
 const styles = StyleSheet.create({
-    title:{
-        fontSize:16,
-        fontWeight:"bold"
-    }
+  main: {
+    flex: 1,
+    marginVertical: 18,
+    // paddingHorizontal: 10, // Ensured the list is aligned
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "#333",
+    marginLeft:10
+  },
 });
